@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+  composer:
+    image: composer:latest
+    networks:
+      - vi-docker-network
+    volumes:
+      - ${SYMFONY_APP_PATH}:/var/www/symfony
+    command: install
+  php:
+    build:
+      context: ./.docker/php
+      args:
+        TIMEZONE: ${TIMEZONE}
+    volumes:
+      - ${SYMFONY_APP_PATH}:/var/www/symfony
+      - ./logs/symfony:/var/www/symfony/app/logs
+      - ./result:/var/www/symfony/app/result
+  nginx:
+    build: ./.docker/nginx
+    ports:
+      - 80:80
+    volumes_from:
+      - php
+    volumes:
+      - ./logs/nginx/:/var/log/nginx
+  rabbit:
+    build:
+      context: ./.docker/rabbit
+  supervisor:
+    build:
+      context: ./.docker/supervisor
