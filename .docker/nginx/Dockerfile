@@ -1,6 +1,6 @@
-FROM debian:jessie
+FROM debian:bullseye
 
-MAINTAINER Maxence POUTORD <maxence.poutord@gmail.com>
+MAINTAINER Anikeev Sergey <keshbuk@gmail.com>
 
 RUN apt-get update && apt-get install -y \
     nginx

@@ -3,8 +3,7 @@ version: '2'
 services:
   composer:
     image: composer:latest
-    networks:
-      - vi-docker-network
+    working_dir: /var/www/symfony
     volumes:
       - ${SYMFONY_APP_PATH}:/var/www/symfony
     command: install

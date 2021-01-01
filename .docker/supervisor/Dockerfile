@@ -4,7 +4,7 @@ RUN apt-get update && \
     apt-get clean
 
 RUN mkdir -p /var/log/supervisor
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisord.conf /etc/supervisor/supervisord.conf
 
 EXPOSE 8089
 
