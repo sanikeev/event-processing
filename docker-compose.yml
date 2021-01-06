@@ -12,6 +12,7 @@ services:
       - ${SYMFONY_APP_PATH}/result:/var/www/symfony/app/result
     environment:
       APP_MAXPROCS: ${APP_MAXPROCS}
+    command: composer install
   nginx:
     build: ./.docker/nginx
     ports:
@@ -33,3 +34,6 @@ services:
       - ${SYMFONY_APP_PATH}/result:/var/www/symfony/app/result
     environment:
       APP_MAXPROCS: ${APP_MAXPROCS}
+    depends_on:
+      - php
+    command: supervisorctl stop all && sleep 10 && supervisorctl start all

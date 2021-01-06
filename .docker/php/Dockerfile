@@ -45,4 +45,3 @@ RUN echo 'alias sf="php app/console"' >> ~/.bashrc \
 
 WORKDIR /var/www/symfony
 
-RUN composer install
