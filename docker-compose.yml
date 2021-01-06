@@ -6,7 +6,7 @@ services:
     working_dir: /var/www/symfony
     volumes:
       - ${SYMFONY_APP_PATH}:/var/www/symfony
-    command: install
+    command: install --ignore-platform-reqs --no-scripts
   php:
     build:
       context: ./.docker/php
