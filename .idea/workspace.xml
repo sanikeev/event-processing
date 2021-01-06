@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f904d3d4-24ee-4221-88f1-815a30874bea" name="Default Changelist" comment="Add message dispatching">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/event-processing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/event-processing.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="f904d3d4-24ee-4221-88f1-815a30874bea" name="Default Changelist" comment="Code style and typehints">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Command/EventConsumeCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/EventConsumeCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Command/EventGenerateCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/EventGenerateCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message/EventMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message/EventMessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MessageHandler/EventMessageHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MessageHandler/EventMessageHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Connection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Receiver.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Receiver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Sender.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Sender.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +99,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1609318503774</updated>
-      <workItem from="1609318507945" duration="52695000" />
+      <workItem from="1609318507945" duration="54405000" />
     </task>
     <task id="LOCAL-00001" summary="Add message dispatching">
       <created>1609966798375</created>
@@ -121,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609966798375</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Code style and typehints">
+      <created>1609969059236</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1609969059236</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,7 +134,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add message dispatching" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add message dispatching" />
+    <MESSAGE value="Code style and typehints" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code style and typehints" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
