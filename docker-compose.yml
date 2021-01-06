@@ -36,4 +36,3 @@ services:
       APP_MAXPROCS: ${APP_MAXPROCS}
     depends_on:
       - php
-    command: supervisorctl stop all && sleep 10 && supervisorctl start all
