@@ -2,22 +2,36 @@
 
 namespace App\Message;
 
+use DateTimeInterface;
+
 final class EventMessage
 {
-    /*
-     * Add whatever properties & methods you need to hold the
-     * data for this message class.
-     */
 
-     private $name;
+    private $msg;
 
-     public function __construct(string $name)
-     {
-         $this->name = $name;
-     }
+    private $accountId;
 
-    public function getName(): string
+    private $createdAt;
+
+    public function __construct(int $accountId, string $msg, DateTimeInterface $createdAt)
     {
-        return $this->name;
+        $this->msg = $msg;
+        $this->accountId = $accountId;
+        $this->createdAt = $createdAt;
+    }
+
+    public function getMsg(): string
+    {
+        return $this->msg;
+    }
+
+    public function getAccountId(): int
+    {
+        return $this->accountId;
+    }
+
+    public function getCreatedAt(): DateTimeInterface
+    {
+        return $this->createdAt;
     }
 }

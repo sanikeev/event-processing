@@ -5,7 +5,12 @@ framework:
 
         transports:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
-             event: '%env(MESSENGER_TRANSPORT_DSN)%'
+             event:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+#                options:
+#                  exchange:
+#                    name: main
+#                    type: direct
             # failed: 'doctrine://default?queue_name=failed'
             # sync: 'sync://'
 

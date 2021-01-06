@@ -14,8 +14,10 @@ services:
         TIMEZONE: ${TIMEZONE}
     volumes:
       - ${SYMFONY_APP_PATH}:/var/www/symfony
-      - ./logs/symfony:/var/www/symfony/app/logs
-      - ./result:/var/www/symfony/app/result
+      - ${SYMFONY_APP_PATH}/logs/symfony:/var/www/symfony/app/logs
+      - ${SYMFONY_APP_PATH}/result:/var/www/symfony/app/result
+    environment:
+      APP_MAXPROCS: ${APP_MAXPROCS}
   nginx:
     build: ./.docker/nginx
     ports:
@@ -27,6 +29,13 @@ services:
   rabbit:
     build:
       context: ./.docker/rabbit
+    ports:
+      - 15672:15672
   supervisor:
     build:
       context: ./.docker/supervisor
+    volumes:
+      - ${SYMFONY_APP_PATH}:/var/www/symfony
+      - ${SYMFONY_APP_PATH}/result:/var/www/symfony/app/result
+    environment:
+      APP_MAXPROCS: ${APP_MAXPROCS}

@@ -4,12 +4,26 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    max_workers: '%env(APP_MAXPROCS)%'
+    worker_id: '%env(APP_PROCNUM)%'
+    rmq_host: '%env(APP_RMQ_HOST)%'
+    rmq_port: '%env(APP_RMQ_PORT)%'
+    rmq_user: '%env(APP_RMQ_USER)%'
+    rmq_password: '%env(APP_RMQ_PASSWORD)%'
 
 services:
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            $maxWorkers: '%max_workers%'
+            $workerId: '%worker_id%'
+            $rmqHost: '%rmq_host%'
+            $rmqPort: '%rmq_port%'
+            $rmqUser: '%rmq_user%'
+            $rmqPassword: '%rmq_password%'
+            $exchangeName: 'event'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name

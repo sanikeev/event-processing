@@ -2,18 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f904d3d4-24ee-4221-88f1-815a30874bea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.docker/supervisor/supervisord.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/EventController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Message/EventMessage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MessageHandler/EventMessageHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.docker/nginx/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/nginx/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Command/EventConsumeCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Command/EventGenerateCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/Connection.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/Receiver.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/Sender.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.docker/php/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/php/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.docker/supervisor/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/supervisor/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.docker/supervisor/supervisord.conf" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/supervisor/supervisord.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/event-processing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/event-processing.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/messenger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/messenger.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/nginx/symfony_access.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/nginx/symfony_access.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/nginx/symfony_error.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/nginx/symfony_error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Message/EventMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Message/EventMessage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MessageHandler/EventMessageHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MessageHandler/EventMessageHandler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +84,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/redis-messenger" />
       <path value="$PROJECT_DIR$/vendor/symfony/messenger" />
       <path value="$PROJECT_DIR$/vendor/symfony/amqp-messenger" />
+      <path value="$PROJECT_DIR$/vendor/php-amqplib/php-amqplib" />
+      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
     </include_path>
   </component>
   <component name="ProjectId" id="1mMzyYxZQkgAkZv7ZZsXosb5cQg" />
@@ -102,7 +115,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1609318503774</updated>
-      <workItem from="1609318507945" duration="9725000" />
+      <workItem from="1609318507945" duration="50559000" />
     </task>
     <servers />
   </component>
