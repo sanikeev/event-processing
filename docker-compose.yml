@@ -1,12 +1,6 @@
 version: '2'
 
 services:
-  composer:
-    image: composer:latest
-    working_dir: /var/www/symfony
-    volumes:
-      - ${SYMFONY_APP_PATH}:/var/www/symfony
-    command: install --ignore-platform-reqs --no-scripts
   php:
     build:
       context: ./.docker/php
@@ -18,8 +12,6 @@ services:
       - ${SYMFONY_APP_PATH}/result:/var/www/symfony/app/result
     environment:
       APP_MAXPROCS: ${APP_MAXPROCS}
-    depends_on:
-      - composer
   nginx:
     build: ./.docker/nginx
     ports:
@@ -41,5 +33,3 @@ services:
       - ${SYMFONY_APP_PATH}/result:/var/www/symfony/app/result
     environment:
       APP_MAXPROCS: ${APP_MAXPROCS}
-    depends_on:
-      - composer
