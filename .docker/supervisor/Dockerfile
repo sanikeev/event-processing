@@ -21,10 +21,12 @@ COPY supervisord.conf /etc/supervisor/supervisord.conf
 
 EXPOSE 8089
 
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-&& composer --version
-
 WORKDIR /var/www/symfony
+
+COPY start.sh /usr/bin/start.sh
+
+RUN ["chmod", "+x", "/usr/bin/start.sh"]
+
+ENTRYPOINT ["start.sh"]
 
 CMD ["/usr/bin/supervisord"]

@@ -1,6 +1,12 @@
 version: '2'
 
 services:
+  composer:
+    image: composer:latest
+    working_dir: /var/www/symfony
+    volumes:
+      - ${SYMFONY_APP_PATH}:/var/www/symfony
+    command: install --ignore-platform-reqs --no-scripts
   php:
     build:
       context: ./.docker/php
