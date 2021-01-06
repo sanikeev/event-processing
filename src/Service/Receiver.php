@@ -1,46 +1,59 @@
 <?php
 
-
 namespace App\Service;
-
 
 use App\MessageHandler\EventMessageHandler;
 
 class Receiver
 {
-
     /**
      * @var Connection
      */
-    private $connection;
+    private Connection $connection;
+
     /**
      * @var EventMessageHandler
      */
-    private $handler;
-    /**
-     * @var int|string
-     */
-    private $workerId;
+    private EventMessageHandler $handler;
 
-    public function __construct(Connection $connection, EventMessageHandler $handler, int $workerId)
+    /**
+     * @var int
+     */
+    private int $workerId;
+
+    /**
+     * @var string
+     */
+    private string $exchangeName;
+
+    /**
+     * Receiver constructor.
+     * @param Connection $connection
+     * @param EventMessageHandler $handler
+     * @param int $workerId
+     * @param string $exchangeName
+     */
+    public function __construct(Connection $connection, EventMessageHandler $handler, int $workerId, string $exchangeName)
     {
         $this->connection = $connection;
         $this->handler = $handler;
         $this->workerId = $workerId;
+        $this->exchangeName = $exchangeName;
     }
 
-    public function consume()
+    /**
+     * @throws \ErrorException
+     */
+    public function consume(): void
     {
-        $exchangeName = 'event';
-
         $channel = $this->connection->channel();
 
-        $this->connection->exchange($channel, $exchangeName, Connection::EXCHANGE_TYPE_DIRECT);
+        $this->connection->exchange($channel, $this->exchangeName, Connection::EXCHANGE_TYPE_DIRECT);
 
-        $queueName = 'worker_' . $this->workerId;
-        $routingKey = 'account_' . $this->workerId;
+        $queueName = 'worker_'.$this->workerId;
+        $routingKey = 'account_'.$this->workerId;
 
-        $this->connection->queue($channel, $queueName, $exchangeName, $routingKey);
+        $this->connection->queue($channel, $queueName, $this->exchangeName, $routingKey);
 
         $this->connection->receive($channel, $queueName, $this->handler);
     }

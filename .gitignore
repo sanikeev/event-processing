@@ -12,3 +12,8 @@
 supervisord.log
 supervisord.pid
 /result
+
+###> friendsofphp/php-cs-fixer ###
+/.php_cs
+/.php_cs.cache
+###< friendsofphp/php-cs-fixer ###

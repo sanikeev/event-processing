@@ -6,14 +6,10 @@ use App\Message\EventMessage;
 use App\Service\Sender;
 use DateTime;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
-use Symfony\Component\Messenger\Envelope;
-use Symfony\Component\Messenger\MessageBusInterface;
 
 class EventGenerateCommand extends Command
 {
@@ -21,23 +17,34 @@ class EventGenerateCommand extends Command
     /**
      * @var Sender
      */
-    private $sender;
+    private Sender $sender;
 
-
+    /**
+     * EventGenerateCommand constructor.
+     * @param Sender $sender
+     */
     public function __construct(Sender $sender)
     {
         $this->sender = $sender;
 
-        parent::__construct(null);
+        parent::__construct();
     }
 
-    protected function configure()
+    /**
+     * Configure
+     */
+    protected function configure(): void
     {
         $this
             ->setDescription('Generates series of test data')
             ->addOption('accnum', null, InputOption::VALUE_OPTIONAL, 'Number of accounts', 10);
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
@@ -47,17 +54,10 @@ class EventGenerateCommand extends Command
         $accountNumber = $input->getOption('accnum');
 
         for ($i = 1; $i <= $accountNumber; $i++) {
-
-            $routingKey = 'account_' . $i;
-
-            $attrs = [
-                'queue' => ['name' => $routingKey]
-            ];
-
             for ($n = 0; $n < $eventsNumber; $n++) {
                 $message = new EventMessage(
                     $i,
-                    $n . ' some random string ' . uniqid("", true),
+                    $n.' some random string '.uniqid('', true),
                     new DateTime()
                 );
 

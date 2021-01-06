@@ -1,27 +1,32 @@
 <?php
 
-
 namespace App\Service;
-
 
 use App\Message\EventMessage;
 
 class Sender
 {
-
     /**
      * @var Connection
      */
-    private $connection;
+    private Connection $connection;
+
     /**
      * @var int
      */
-    private $maxWorkers;
+    private int $maxWorkers;
+
     /**
      * @var string
      */
-    private $exchangeName;
+    private string $exchangeName;
 
+    /**
+     * Sender constructor.
+     * @param Connection $connection
+     * @param string $maxWorkers
+     * @param string $exchangeName
+     */
     public function __construct(Connection $connection, string $maxWorkers, string $exchangeName)
     {
         $this->connection = $connection;
@@ -29,7 +34,10 @@ class Sender
         $this->exchangeName = $exchangeName;
     }
 
-    public function send(EventMessage $eventMessage)
+    /**
+     * @param EventMessage $eventMessage
+     */
+    public function send(EventMessage $eventMessage): void
     {
         $channel = $this->connection->channel();
 
@@ -41,7 +49,7 @@ class Sender
 
         $key = $accountId % $this->maxWorkers;
 
-        $routingKey = 'account_' . $key;
+        $routingKey = 'account_'.$key;
 
         $this->connection->publish($channel, $msgSerialized, $this->exchangeName, $routingKey);
     }

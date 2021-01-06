@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\MessageHandler\EventMessageHandler;
+use Exception;
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPConnection;
 use PhpAmqpLib\Message\AMQPMessage;
@@ -16,20 +17,30 @@ class Connection
     /**
      * @var string
      */
-    private $host;
-    /**
-     * @var string
-     */
-    private $port;
-    /**
-     * @var string
-     */
-    private $user;
-    /**
-     * @var string
-     */
-    private $password;
+    private string $host;
 
+    /**
+     * @var string
+     */
+    private string $port;
+
+    /**
+     * @var string
+     */
+    private string $user;
+
+    /**
+     * @var string
+     */
+    private string $password;
+
+    /**
+     * Connection constructor.
+     * @param string $rmqHost
+     * @param string $rmqPort
+     * @param string $rmqUser
+     * @param string $rmqPassword
+     */
     public function __construct(string $rmqHost, string $rmqPort, string $rmqUser, string $rmqPassword)
     {
         $this->host = $rmqHost;
@@ -38,6 +49,9 @@ class Connection
         $this->password = $rmqPassword;
     }
 
+    /**
+     * @return AMQPConnection
+     */
     public function connect(): AMQPConnection
     {
         return new AMQPConnection(
@@ -48,30 +62,56 @@ class Connection
         );
     }
 
+    /**
+     * @return AMQPChannel
+     */
     public function channel(): AMQPChannel
     {
         return $this->connect()->channel();
     }
 
+    /**
+     * @param AMQPChannel $channel
+     * @param string $name
+     * @param string $type
+     */
     public function exchange(AMQPChannel $channel, string $name, string $type): void
     {
         $channel->exchange_declare($name, $type, false, false, false);
     }
 
-    public function publish(AMQPChannel $channel, string $message, string $exchangeName, string $routingKey)
+    /**
+     * @param AMQPChannel $channel
+     * @param string $message
+     * @param string $exchangeName
+     * @param string $routingKey
+     */
+    public function publish(AMQPChannel $channel, string $message, string $exchangeName, string $routingKey): void
     {
         $msg = new AMQPMessage($message);
 
         $channel->basic_publish($msg, $exchangeName, $routingKey);
     }
 
-    public function queue(AMQPChannel $channel, string $name, string $exchangeName, string $routingKey)
+    /**
+     * @param AMQPChannel $channel
+     * @param string $name
+     * @param string $exchangeName
+     * @param string $routingKey
+     */
+    public function queue(AMQPChannel $channel, string $name, string $exchangeName, string $routingKey): void
     {
         $channel->queue_declare($name, false, false, true, false);
         $channel->queue_bind($name, $exchangeName, $routingKey);
     }
 
-    public function receive(AMQPChannel $channel, string $queueName, EventMessageHandler $handler)
+    /**
+     * @param AMQPChannel $channel
+     * @param string $queueName
+     * @param EventMessageHandler $handler
+     * @throws \ErrorException
+     */
+    public function receive(AMQPChannel $channel, string $queueName, EventMessageHandler $handler): void
     {
         $channel->basic_consume($queueName, '', false, true, false, false, $handler);
 
@@ -80,7 +120,10 @@ class Connection
         }
     }
 
-    public function closeConnection()
+    /**
+     * @throws Exception
+     */
+    public function closeConnection(): void
     {
         $this->channel()->close();
         $this->connect()->close();

@@ -4,9 +4,7 @@ namespace App\Command;
 
 use App\Service\Receiver;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
@@ -16,8 +14,12 @@ class EventConsumeCommand extends Command
     /**
      * @var Receiver
      */
-    private $receiver;
+    private Receiver $receiver;
 
+    /**
+     * EventConsumeCommand constructor.
+     * @param Receiver $receiver
+     */
     public function __construct(Receiver $receiver)
     {
         $this->receiver = $receiver;
@@ -25,13 +27,21 @@ class EventConsumeCommand extends Command
         parent::__construct();
     }
 
-    protected function configure()
+    /**
+     * configure
+     */
+    protected function configure(): void
     {
         $this
             ->setDescription('Consume events for accounts')
         ;
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
