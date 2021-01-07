@@ -2,11 +2,13 @@
 
 set -e
 
+FILE="/var/www/symfony/vendor/autoload.php"
+
 cmd="$@"
 
 >&2 echo "!!!!!!!! Check autoload.php for available !!!!!!!!"
 
-until [ ! "$(docker ps -a | grep Exited)" ]; do
+until [[ -f "$FILE" ]]; do
   >&2 echo "Autoload.php is unavailable - sleeping"
   sleep 1
 done
