@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f904d3d4-24ee-4221-88f1-815a30874bea" name="Default Changelist" comment="fix config">
-      <change beforePath="$PROJECT_DIR$/.docker/supervisor/start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/supervisor/start.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.docker/supervisor/supervisord.conf" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/supervisor/supervisord.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f904d3d4-24ee-4221-88f1-815a30874bea" name="Default Changelist" comment="fix config" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
